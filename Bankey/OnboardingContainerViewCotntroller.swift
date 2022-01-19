@@ -14,6 +14,10 @@ class OnboardingContainerViewController: UIViewController {
     ///
     /// this is the pages that will be displayed in the page controller
     ///
+    /// the images that will go inside each page should be:
+    ///     - preserved vector data (the right panel of the assets)
+    ///     - single scale (the right panel of the assets)
+    ///
     var pages = [UIViewController]()
     
     ///

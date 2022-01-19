@@ -16,6 +16,8 @@
 		2EC76F0C2798928700ED7462 /* PageOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F0B2798928700ED7462 /* PageOneViewController.swift */; };
 		2EC76F0E2798929B00ED7462 /* PageTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F0D2798929B00ED7462 /* PageTwoViewController.swift */; };
 		2EC76F10279892A700ED7462 /* PageThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F0F279892A700ED7462 /* PageThreeViewController.swift */; };
+		2EC76F122798A1FE00ED7462 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F112798A1FE00ED7462 /* OnBoardingViewController.swift */; };
+		2EC76F142798A9F000ED7462 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F132798A9F000ED7462 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		2EC76F0B2798928700ED7462 /* PageOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneViewController.swift; sourceTree = "<group>"; };
 		2EC76F0D2798929B00ED7462 /* PageTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoViewController.swift; sourceTree = "<group>"; };
 		2EC76F0F279892A700ED7462 /* PageThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeViewController.swift; sourceTree = "<group>"; };
+		2EC76F112798A1FE00ED7462 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		2EC76F132798A9F000ED7462 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				2E32D6712796F54B00B2F86D /* AppDelegate.swift */,
+				2EC76F152798AA4D00ED7462 /* Utils */,
 				2EC76F08279854EF00ED7462 /* Onboarding */,
 				2EC76F0527973FDC00ED7462 /* Login */,
 				2EC76F0427973E5B00ED7462 /* AppFiles */,
@@ -96,8 +101,17 @@
 				2EC76F0B2798928700ED7462 /* PageOneViewController.swift */,
 				2EC76F0D2798929B00ED7462 /* PageTwoViewController.swift */,
 				2EC76F0F279892A700ED7462 /* PageThreeViewController.swift */,
+				2EC76F112798A1FE00ED7462 /* OnBoardingViewController.swift */,
 			);
 			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		2EC76F152798AA4D00ED7462 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2EC76F132798A9F000ED7462 /* AppConstants.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,8 +207,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EC76F0C2798928700ED7462 /* PageOneViewController.swift in Sources */,
+				2EC76F142798A9F000ED7462 /* AppConstants.swift in Sources */,
 				2EC76F10279892A700ED7462 /* PageThreeViewController.swift in Sources */,
 				2EC76F0A27986A2E00ED7462 /* OnboardingContainerViewCotntroller.swift in Sources */,
+				2EC76F122798A1FE00ED7462 /* OnBoardingViewController.swift in Sources */,
 				2EC76F0E2798929B00ED7462 /* PageTwoViewController.swift in Sources */,
 				2EC76F072797402900ED7462 /* LoginView.swift in Sources */,
 				2E32D6762796F54B00B2F86D /* LoginViewController.swift in Sources */,
