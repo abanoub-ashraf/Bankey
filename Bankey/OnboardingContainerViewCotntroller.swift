@@ -44,9 +44,20 @@ class OnboardingContainerViewController: UIViewController {
         ///
         /// instantiate the pages that will go in the page controller
         ///
-        let page1 = PageOneViewController()
-        let page2 = PageTwoViewController()
-        let page3 = PageThreeViewController()
+        let page1 = OnBoardingViewController(
+            heroImageName: AppConstants.deloreanImageName,
+            titleText: AppConstants.onboardingDeloreanLabel
+        )
+        
+        let page2 = OnBoardingViewController(
+            heroImageName: AppConstants.worldImageName,
+            titleText: AppConstants.onboardingWorldLabel
+        )
+        
+        let page3 = OnBoardingViewController(
+            heroImageName: AppConstants.thumbsImageName,
+            titleText: AppConstants.onboardingThumbsLabel
+        )
         
         ///
         /// add the pages to the pages array of the page controller

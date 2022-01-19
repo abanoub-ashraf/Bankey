@@ -13,9 +13,6 @@
 		2E32D67E2796F54D00B2F86D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E32D67C2796F54D00B2F86D /* LaunchScreen.storyboard */; };
 		2EC76F072797402900ED7462 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F062797402900ED7462 /* LoginView.swift */; };
 		2EC76F0A27986A2E00ED7462 /* OnboardingContainerViewCotntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F0927986A2E00ED7462 /* OnboardingContainerViewCotntroller.swift */; };
-		2EC76F0C2798928700ED7462 /* PageOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F0B2798928700ED7462 /* PageOneViewController.swift */; };
-		2EC76F0E2798929B00ED7462 /* PageTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F0D2798929B00ED7462 /* PageTwoViewController.swift */; };
-		2EC76F10279892A700ED7462 /* PageThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F0F279892A700ED7462 /* PageThreeViewController.swift */; };
 		2EC76F122798A1FE00ED7462 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F112798A1FE00ED7462 /* OnBoardingViewController.swift */; };
 		2EC76F142798A9F000ED7462 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F132798A9F000ED7462 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
@@ -29,9 +26,6 @@
 		2E32D67F2796F54D00B2F86D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EC76F062797402900ED7462 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2EC76F0927986A2E00ED7462 /* OnboardingContainerViewCotntroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewCotntroller.swift; sourceTree = "<group>"; };
-		2EC76F0B2798928700ED7462 /* PageOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneViewController.swift; sourceTree = "<group>"; };
-		2EC76F0D2798929B00ED7462 /* PageTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoViewController.swift; sourceTree = "<group>"; };
-		2EC76F0F279892A700ED7462 /* PageThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeViewController.swift; sourceTree = "<group>"; };
 		2EC76F112798A1FE00ED7462 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		2EC76F132798A9F000ED7462 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,9 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				2EC76F0927986A2E00ED7462 /* OnboardingContainerViewCotntroller.swift */,
-				2EC76F0B2798928700ED7462 /* PageOneViewController.swift */,
-				2EC76F0D2798929B00ED7462 /* PageTwoViewController.swift */,
-				2EC76F0F279892A700ED7462 /* PageThreeViewController.swift */,
 				2EC76F112798A1FE00ED7462 /* OnBoardingViewController.swift */,
 			);
 			name = Onboarding;
@@ -206,12 +197,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EC76F0C2798928700ED7462 /* PageOneViewController.swift in Sources */,
 				2EC76F142798A9F000ED7462 /* AppConstants.swift in Sources */,
-				2EC76F10279892A700ED7462 /* PageThreeViewController.swift in Sources */,
 				2EC76F0A27986A2E00ED7462 /* OnboardingContainerViewCotntroller.swift in Sources */,
 				2EC76F122798A1FE00ED7462 /* OnBoardingViewController.swift in Sources */,
-				2EC76F0E2798929B00ED7462 /* PageTwoViewController.swift in Sources */,
 				2EC76F072797402900ED7462 /* LoginView.swift in Sources */,
 				2E32D6762796F54B00B2F86D /* LoginViewController.swift in Sources */,
 				2E32D6722796F54B00B2F86D /* AppDelegate.swift in Sources */,
