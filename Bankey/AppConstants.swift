@@ -2,15 +2,18 @@ import Foundation
 
 struct AppConstants {
     
-    // MARK: - Images
+    // MARK: - Images Names
 
     static let deloreanImageName        = "delorean"
     static let worldImageName           = "world"
     static let thumbsImageName          = "thumbs"
     
+    // MARK: - SFSymbols
+    
     static let summaryImageName         = "list.dash.header.rectangle"
     static let moneyImageName           = "arrow.left.arrow.right"
     static let moreImageName            = "ellipsis.circle"
+    static let chevronImageName         = "chevron.right"
     
     // MARK: - Strings
 

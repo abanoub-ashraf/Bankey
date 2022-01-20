@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor     = .systemBackground
-        window?.rootViewController  = mainViewController
-        
-        mainViewController.selectedIndex = 2
+        window?.rootViewController  = AccountSummaryViewController()
         
         loginViewController.delegate                = self
         onBoardingContainerViewController.delgate   = self
@@ -39,14 +37,14 @@ extension AppDelegate {
     ///
     /// sets the root view controller with smooth transition
     ///
-    func setRootViewController(_ vc: UIViewController, animated: Bool = true) {
+    func setRootViewController(_ viewController: UIViewController, animated: Bool = true) {
         guard animated, let window = self.window else {
-            self.window?.rootViewController = vc
+            self.window?.rootViewController = viewController
             self.window?.makeKeyAndVisible()
             return
         }
         
-        window.rootViewController = vc
+        window.rootViewController = viewController
         window.makeKeyAndVisible()
         
         ///

@@ -1,18 +1,5 @@
 import UIKit
 
-protocol LogoutDelegate: AnyObject {
-    func didLogout()
-}
-
-///
-/// - connects the login controller with the app delegate
-///
-/// - to tell the AppDelegate to do something after we login
-///
-protocol LoginViewControllerDelegate: AnyObject {
-    func didFinishLogIn()
-}
-
 class LoginViewController: UIViewController {
     
     // MARK: - UI
@@ -119,13 +106,13 @@ extension LoginViewController {
         NSLayoutConstraint.activate([
             loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 2),
-            view.centerYAnchor.constraint(equalTo: loginView.centerYAnchor),
+            view.centerYAnchor.constraint(equalTo: loginView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
             signInButton.topAnchor.constraint(equalToSystemSpacingBelow: loginView.bottomAnchor, multiplier: 2),
             signInButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
-            signInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
+            signInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([

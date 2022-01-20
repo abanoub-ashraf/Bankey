@@ -10,6 +10,7 @@ disabled_rules:
   - orphaned_doc_comment
   - line_length
   - attributes
+  - number_separator
 opt_in_rules:
   - number_separator
   - empty_count
