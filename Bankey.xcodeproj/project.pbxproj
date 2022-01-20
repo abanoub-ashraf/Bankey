@@ -17,6 +17,12 @@
 		2EC76F142798A9F000ED7462 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F132798A9F000ED7462 /* AppConstants.swift */; };
 		2EC76F1B2799AE3E00ED7462 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F1A2799AE3E00ED7462 /* DummyViewController.swift */; };
 		2EC76F1D2799C60900ED7462 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F1C2799C60900ED7462 /* LocalState.swift */; };
+		2EC76F202799D9C100ED7462 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F1F2799D9C100ED7462 /* AppColors.swift */; };
+		2EC76F222799DA4400ED7462 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F212799DA4400ED7462 /* UIViewControllerExt.swift */; };
+		2EC76F252799DC6E00ED7462 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F242799DC6E00ED7462 /* MainViewController.swift */; };
+		2EC76F272799DE7900ED7462 /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F262799DE7900ED7462 /* AccountSummaryViewController.swift */; };
+		2EC76F292799DEAC00ED7462 /* MoveMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F282799DEAC00ED7462 /* MoveMoneyViewController.swift */; };
+		2EC76F2B2799DED700ED7462 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC76F2A2799DED700ED7462 /* MoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		2EC76F132798A9F000ED7462 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		2EC76F1A2799AE3E00ED7462 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 		2EC76F1C2799C60900ED7462 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
+		2EC76F1F2799D9C100ED7462 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		2EC76F212799DA4400ED7462 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		2EC76F242799DC6E00ED7462 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2EC76F262799DE7900ED7462 /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
+		2EC76F282799DEAC00ED7462 /* MoveMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveMoneyViewController.swift; sourceTree = "<group>"; };
+		2EC76F2A2799DED700ED7462 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +77,12 @@
 			isa = PBXGroup;
 			children = (
 				2E32D6712796F54B00B2F86D /* AppDelegate.swift */,
-				2EC76F152798AA4D00ED7462 /* Utils */,
-				2EC76F08279854EF00ED7462 /* Onboarding */,
 				2EC76F0527973FDC00ED7462 /* Login */,
+				2EC76F08279854EF00ED7462 /* Onboarding */,
+				2EC76F232799DA6200ED7462 /* Extensions */,
+				2EC76F152798AA4D00ED7462 /* Utils */,
 				2EC76F0427973E5B00ED7462 /* AppFiles */,
+				2EC76F2C2799E30F00ED7462 /* TabBar */,
 			);
 			path = Bankey;
 			sourceTree = "<group>";
@@ -105,10 +119,30 @@
 		2EC76F152798AA4D00ED7462 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2EC76F1F2799D9C100ED7462 /* AppColors.swift */,
 				2EC76F132798A9F000ED7462 /* AppConstants.swift */,
 				2EC76F1C2799C60900ED7462 /* LocalState.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		2EC76F232799DA6200ED7462 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2EC76F212799DA4400ED7462 /* UIViewControllerExt.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		2EC76F2C2799E30F00ED7462 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2EC76F242799DC6E00ED7462 /* MainViewController.swift */,
+				2EC76F2A2799DED700ED7462 /* MoreViewController.swift */,
+				2EC76F282799DEAC00ED7462 /* MoveMoneyViewController.swift */,
+				2EC76F262799DE7900ED7462 /* AccountSummaryViewController.swift */,
+			);
+			name = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +238,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EC76F1B2799AE3E00ED7462 /* DummyViewController.swift in Sources */,
+				2EC76F2B2799DED700ED7462 /* MoreViewController.swift in Sources */,
+				2EC76F252799DC6E00ED7462 /* MainViewController.swift in Sources */,
+				2EC76F202799D9C100ED7462 /* AppColors.swift in Sources */,
+				2EC76F222799DA4400ED7462 /* UIViewControllerExt.swift in Sources */,
+				2EC76F292799DEAC00ED7462 /* MoveMoneyViewController.swift in Sources */,
 				2EC76F142798A9F000ED7462 /* AppConstants.swift in Sources */,
 				2EC76F0A27986A2E00ED7462 /* OnboardingContainerViewCotntroller.swift in Sources */,
+				2EC76F272799DE7900ED7462 /* AccountSummaryViewController.swift in Sources */,
 				2EC76F122798A1FE00ED7462 /* OnBoardingViewController.swift in Sources */,
 				2EC76F072797402900ED7462 /* LoginView.swift in Sources */,
 				2E32D6762796F54B00B2F86D /* LoginViewController.swift in Sources */,

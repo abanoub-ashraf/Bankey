@@ -1,6 +1,6 @@
 ### Hello there, This is ***Bankey*** 🔥🔥 - An iOS Native Application Written in [Swift 5.5][Swift 5.5] 👋
 
-<!-- bages here -->
+<!-- badges here -->
 
 ## 📸 Screenshots
 

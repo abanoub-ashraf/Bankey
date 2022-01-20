@@ -10,6 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let loginViewController                 = LoginViewController()
     let onBoardingContainerViewController   = OnboardingContainerViewController()
     let dummyViewController                 = DummyViewController()
+    let mainViewController                  = MainViewController()
     
     // MARK: - AppLifeCycle
     
@@ -18,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor     = .systemBackground
-        window?.rootViewController  = loginViewController
+        window?.rootViewController  = mainViewController
+        
+        mainViewController.selectedIndex = 2
         
         loginViewController.delegate                = self
         onBoardingContainerViewController.delgate   = self

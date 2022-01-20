@@ -4,9 +4,13 @@ struct AppConstants {
     
     // MARK: - Images
 
-    static let deloreanImageName    = "delorean"
-    static let worldImageName       = "world"
-    static let thumbsImageName      = "thumbs"
+    static let deloreanImageName        = "delorean"
+    static let worldImageName           = "world"
+    static let thumbsImageName          = "thumbs"
+    
+    static let summaryImageName         = "list.dash.header.rectangle"
+    static let moneyImageName           = "arrow.left.arrow.right"
+    static let moreImageName            = "ellipsis.circle"
     
     // MARK: - Strings
 
