@@ -1,5 +1,3 @@
-line_length:
-
 included:
 
 excluded:
@@ -10,6 +8,8 @@ disabled_rules:
   - todo
   - switch_case_alignment
   - orphaned_doc_comment
+  - line_length
+  - attributes
 opt_in_rules:
   - number_separator
   - empty_count

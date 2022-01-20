@@ -1,5 +1,13 @@
 import UIKit
 
+///
+/// this protocol is for telling the app delegate that we finished
+/// onboarding so it does something about it
+///
+protocol OnboardingContainerViewControllerDelegate: AnyObject {
+    func didFinishOnboarding()
+}
+
 class OnboardingContainerViewController: UIViewController {
     
     // MARK: - UI
@@ -8,6 +16,10 @@ class OnboardingContainerViewController: UIViewController {
     /// this contains the whole onboarding experience
     ///
     let pageViewController: UIPageViewController
+    let closeButton = UIButton(type: .system)
+    let backButton  = UIButton(type: .system)
+    let nextButton  = UIButton(type: .system)
+    let doneButton  = UIButton(type: .system)
 
     // MARK: - Properties
 
@@ -23,11 +35,22 @@ class OnboardingContainerViewController: UIViewController {
     ///
     /// this is the current page controller that's being displayed
     ///
+    /// - when the index is page - 1 which is the last page
+    ///   we wanna hide the next button and show the done one
+    ///
+    /// - hide the back button when the index is zero
+    ///
     var currentVC: UIViewController {
         didSet {
+            guard let index = pages.firstIndex(of: currentVC) else { return }
             
+            nextButton.isHidden = index == pages.count - 1
+            backButton.isHidden = index == 0
+            doneButton.isHidden = !(index == pages.count - 1)
         }
     }
+    
+    weak var delgate: OnboardingContainerViewControllerDelegate?
 
     // MARK: - Initializer
 
@@ -40,7 +63,7 @@ class OnboardingContainerViewController: UIViewController {
             navigationOrientation: .horizontal,
             options: nil
         )
-                
+        
         ///
         /// instantiate the pages that will go in the page controller
         ///
@@ -83,8 +106,14 @@ class OnboardingContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemPurple
-        
+        setup()
+        style()
+        layout()
+    }
+    
+    // MARK: - Helper Functions
+
+    private func setup() {
         ///
         /// - these three steps are for adding a child view controller
         ///   to a parent view controller
@@ -99,14 +128,6 @@ class OnboardingContainerViewController: UIViewController {
         /// this means we are gonna be the source of data to this page controller
         ///
         pageViewController.dataSource = self
-        pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: pageViewController.view.topAnchor),
-            view.leadingAnchor.constraint(equalTo: pageViewController.view.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: pageViewController.view.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: pageViewController.view.bottomAnchor)
-        ])
         
         ///
         /// set the view controllers of the page controller
@@ -122,6 +143,61 @@ class OnboardingContainerViewController: UIViewController {
         /// set the first page as the current vc when this screen loads
         ///
         currentVC = pages.first!
+    }
+    
+    private func style() {
+        view.backgroundColor = .systemPurple
+        
+        pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        [closeButton, nextButton, backButton, doneButton].forEach { subView in
+            subView.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        closeButton.setTitle("Close", for: [])
+        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .primaryActionTriggered)
+        
+        nextButton.setTitle("Next", for: [])
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .primaryActionTriggered)
+        
+        backButton.setTitle("Back", for: [])
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .primaryActionTriggered)
+        
+        doneButton.setTitle("Done", for: [])
+        doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .primaryActionTriggered)
+    }
+    
+    private func layout() {
+        [closeButton, doneButton, backButton, nextButton].forEach { subView in
+            view.addSubview(subView)
+        }
+        
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: pageViewController.view.topAnchor),
+            view.leadingAnchor.constraint(equalTo: pageViewController.view.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: pageViewController.view.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: pageViewController.view.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: nextButton.trailingAnchor, multiplier: 2),
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: nextButton.bottomAnchor, multiplier: 4)
+        ])
+        
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: backButton.bottomAnchor, multiplier: 4)
+        ])
+        
+        NSLayoutConstraint.activate([
+            closeButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            closeButton.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2)
+        ])
+        
+        NSLayoutConstraint.activate([
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: doneButton.trailingAnchor, multiplier: 2),
+            view.bottomAnchor.constraint(equalToSystemSpacingBelow: doneButton.bottomAnchor, multiplier: 4)
+        ])
     }
     
 }
@@ -165,7 +241,7 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
             return nil
         }
         
-        currentVC = pages[index - 1]
+        self.currentVC = pages[index - 1]
         return pages[index - 1]
     }
     
@@ -184,7 +260,7 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
             return nil
         }
         
-        currentVC = pages[index + 1]
+        self.currentVC = pages[index + 1]
         return pages[index + 1]
     }
     
@@ -201,4 +277,40 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return pages.firstIndex(of: self.currentVC) ?? 0
     }
+}
+
+// MARK: - Selectors
+
+extension OnboardingContainerViewController {
+    
+    @objc private func nextButtonTapped(sender: UIButton) {
+        guard let nextVC = getNextViewController(from: currentVC) else { return }
+
+        pageViewController.setViewControllers(
+            [nextVC],
+            direction: .forward,
+            animated: true,
+            completion: nil
+        )
+    }
+    
+    @objc private func backButtonTapped(sender: UIButton) {
+        guard let previousVC = getPreviousViewController(from: currentVC) else { return }
+
+        pageViewController.setViewControllers(
+            [previousVC],
+            direction: .reverse,
+            animated: true,
+            completion: nil
+        )
+    }
+    
+    @objc private func closeButtonTapped(sender: UIButton) {
+        self.delgate?.didFinishOnboarding()
+    }
+    
+    @objc private func doneButtonTapped(sender: UIButton) {
+        self.delgate?.didFinishOnboarding()
+    }
+    
 }

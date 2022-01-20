@@ -1,15 +1,35 @@
 import UIKit
 
+protocol LogoutDelegate: AnyObject {
+    func didLogout()
+}
+
+///
+/// - connects the login controller with the app delegate
+///
+/// - to tell the AppDelegate to do something after we login
+///
+protocol LoginViewControllerDelegate: AnyObject {
+    func didFinishLogIn()
+}
+
 class LoginViewController: UIViewController {
     
     // MARK: - UI
 
+    let titleLabel          = UILabel()
+    let subtitleLabel       = UILabel()
     let loginView           = LoginView()
     let signInButton        = UIButton(type: .system)
     let errorMessageLabel   = UILabel()
     
     // MARK: - Properties
 
+    ///
+    /// this class will call the delegate function
+    ///
+    weak var delegate: LoginViewControllerDelegate?
+    
     var username: String? {
         return loginView.usernameTextField.text
     }
@@ -26,6 +46,14 @@ class LoginViewController: UIViewController {
         style()
         layout()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        signInButton.configuration?.showsActivityIndicator = false
+        loginView.usernameTextField.text = ""
+        loginView.passwordTextField.text = ""
+    }
 
 }
 
@@ -34,9 +62,26 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     private func style() {
-        [loginView, signInButton, errorMessageLabel].forEach { view in
+        [
+            titleLabel,
+            subtitleLabel,
+            loginView,
+            signInButton,
+            errorMessageLabel
+        ].forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.textAlignment    = .center
+        titleLabel.font             = UIFont.preferredFont(forTextStyle: .largeTitle)
+        titleLabel.text             = "Bankey"
+        
+        subtitleLabel.adjustsFontForContentSizeCategory = true
+        subtitleLabel.textAlignment = .center
+        subtitleLabel.font          = UIFont.preferredFont(forTextStyle: .title3)
+        subtitleLabel.numberOfLines = 0
+        subtitleLabel.text          = "Your premium source for all things banking!"
         
         signInButton.configuration                  = .filled()
         signInButton.configuration?.imagePadding    = 8
@@ -50,20 +95,37 @@ extension LoginViewController {
     }
     
     private func layout() {
-        [loginView, signInButton, errorMessageLabel].forEach { subView in
+        [
+            titleLabel,
+            subtitleLabel,
+            loginView,
+            signInButton,
+            errorMessageLabel
+        ].forEach { subView in
             view.addSubview(subView)
         }
         
         NSLayoutConstraint.activate([
-            loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 1)
+            subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            loginView.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 3),
+            subtitleLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
+            subtitleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 2),
+            view.centerYAnchor.constraint(equalTo: loginView.centerYAnchor),
         ])
         
         NSLayoutConstraint.activate([
             signInButton.topAnchor.constraint(equalToSystemSpacingBelow: loginView.bottomAnchor, multiplier: 2),
             signInButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
-            signInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
+            signInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
         ])
         
         NSLayoutConstraint.activate([
@@ -110,6 +172,10 @@ extension LoginViewController {
         ///
         if username == "Kevin" && password == "123" {
             signInButton.configuration?.showsActivityIndicator = true
+            ///
+            /// calling the delegate function
+            ///
+            delegate?.didFinishLogIn()
         } else {
             ///
             /// show an incorrect username and password error
