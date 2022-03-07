@@ -9,7 +9,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let loginViewController                 = LoginViewController()
     let onBoardingContainerViewController   = OnboardingContainerViewController()
-    let dummyViewController                 = DummyViewController()
     let mainViewController                  = MainViewController()
     
     // MARK: - AppLifeCycle
@@ -19,11 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor     = .systemBackground
-        window?.rootViewController  = AccountSummaryViewController()
         
         loginViewController.delegate                = self
         onBoardingContainerViewController.delgate   = self
-        dummyViewController.logoutDelegate          = self
+        
+        let vc = mainViewController
+        vc.setStatusBar()
+        
+        UINavigationBar.appearance().isTranslucent      = false
+        UINavigationBar.appearance().backgroundColor    = AppColors.mainColor
+        
+        window?.rootViewController = vc
         
         return true
     }
@@ -82,7 +87,7 @@ extension AppDelegate: LoginViewControllerDelegate {
         /// if not, go to the onboarding
         ///
         setRootViewController(
-            LocalState.hasOnboarded ? dummyViewController : onBoardingContainerViewController
+            LocalState.hasOnboarded ? mainViewController : onBoardingContainerViewController
         )
     }
     
@@ -99,7 +104,7 @@ extension AppDelegate: OnboardingContainerViewControllerDelegate {
     func didFinishOnboarding() {
         LocalState.hasOnboarded = true
         
-        setRootViewController(dummyViewController)
+        setRootViewController(mainViewController)
     }
     
 }

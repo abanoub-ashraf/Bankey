@@ -29,6 +29,7 @@ extension AccountSummaryViewController {
         tableView.delegate          = self
         tableView.dataSource        = self
         tableView.tableFooterView   = UIView()
+        tableView.backgroundColor   = AppColors.mainColor
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
