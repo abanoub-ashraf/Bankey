@@ -22,13 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginViewController.delegate                = self
         onBoardingContainerViewController.delgate   = self
         
-        let vc = mainViewController
-        vc.setStatusBar()
-        
-        UINavigationBar.appearance().isTranslucent      = false
-        UINavigationBar.appearance().backgroundColor    = AppColors.mainColor
-        
-        window?.rootViewController = vc
+        displayLogin()
         
         return true
     }
@@ -38,6 +32,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: - Helper Functions
 
 extension AppDelegate {
+    
+    private func displayLogin() {
+        setRootViewController(loginViewController)
+    }
+    
+    private func displayNextScreen() {
+        if LocalState.hasOnboarded {
+            prepMainView()
+            
+            setRootViewController(mainViewController)
+        } else {
+            setRootViewController(onBoardingContainerViewController)
+        }
+    }
+    
+    private func prepMainView() {
+        mainViewController.setStatusBar()
+        
+        UINavigationBar.appearance().isTranslucent      = false
+        UINavigationBar.appearance().backgroundColor    = AppColors.mainColor
+    }
     
     ///
     /// sets the root view controller with smooth transition
@@ -86,9 +101,7 @@ extension AppDelegate: LoginViewControllerDelegate {
         /// if onboarded is true, go to the dummy controller,
         /// if not, go to the onboarding
         ///
-        setRootViewController(
-            LocalState.hasOnboarded ? mainViewController : onBoardingContainerViewController
-        )
+        displayNextScreen()
     }
     
 }
@@ -103,6 +116,8 @@ extension AppDelegate: OnboardingContainerViewControllerDelegate {
     ///
     func didFinishOnboarding() {
         LocalState.hasOnboarded = true
+        
+        prepMainView()
         
         setRootViewController(mainViewController)
     }
