@@ -307,7 +307,7 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
     /// Called when the user swipes to go to the next page (swipe left).
     ///
     /// This method is called by the page view controller when the user performs a
-    /// left-to-right swipe gesture, requesting the view controller to show after
+    /// right-to-left swipe gesture, requesting the view controller to show after
     /// the current one.
     ///
     /// - Parameters:
